@@ -1,0 +1,20 @@
+language: php
+php:
+- '5.4'
+env:
+  global:
+script:
+- "./ci-utils/phpcheck && ./ci-utils/pushplug.sh"
+before_deploy:
+- ./ci-utils/mkplug.sh wp
+xdeploy:
+  provider: releases
+  file_glob: true
+  api_key:
+    secure: s1CIMzvgyLJ4CC5DC4ktnA9D9WrRd6xV960A3o4zH2ulhKo8D667v82P7VlXaII3jMAESKRf25lGi3vG1L8e7Z+umhT71HxFFiKpGDcwL1gEdIo7cM3DSOG0G9neT12PuVQNi6SPHCQYQ9pGqYUez0ikY642mjFmRksvdIqlFxeULDJ5pjDeWkX5S2Nl+QTA2eEv7N5kE+KSmyJA2TujInvNgRrn4fCfRfj3JWz0te2A8UtD1OeMeTATp5QOk5I+7xZr8zZIdB4kQJfAbiScczxBDQZ3sM0jDm9JnJI2gcfQTnR/l4/w9u0ih/S6aoK966Snz7kyPlxFGb5iJHkST8fi2XoF3TIRJyscPN75HJn6BfffWQPzvE9Ct9s67SYGTkftt68/Sofe8NZzsIUw9K6IkyK+yOJPfrmRIuL8dFH1Jtj5DxPAm5ijEVYFnVWJy8cW876f9sd2mtnu2a6GQV/y6AZfQ0L3pytP/Tz7DF80P3ObwNqjrTWCV3AFwo2gsWx+Nt+WS5riKFszvapOxinoFB2EN4iY9njdVlSriSPMcEP6W52+MhnC9WRj+BQPu8swVWrd8NI2knJjuug4QG4VPtybFrsuyQIj+45Rmthl3VRzthQx17oQLeeuTgh7yKbi0vVxivoRnmZzWhln2N8CRz7qUDQz9oqb6hsxWts=
+  file: "*.zip"
+  on:
+    repo: iliu-net/S3Copy
+    tags: true
+    branch: master
+  

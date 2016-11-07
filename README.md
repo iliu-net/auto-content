@@ -13,6 +13,21 @@ Start posts with pre-filled content
 
 ## Description
 
+Provides with:
+
+1. Shortcode to create a new post link with a template post.
+2. Functionality to pre-populate new posts from an existing post
+3. Keyword expansions
+
+Keyword expansions:
+
+* date : Current date (using default format)
+* sdate : Current date as YYY-MM-DD
+* week : Year and week of the year
+* datetime : Current date and time
+* login : User name
+* email : E-mail address of current user
+* user : Display name
 
 
 ## Installation
@@ -27,7 +42,3 @@ Start posts with pre-filled content
 - 1.0:
   Initial release.
 
-## Notes
-
-- Adding categories?
-- http://wordpress.stackexchange.com/questions/77504/how-to-add-category-to-wp-admin-post-new-php

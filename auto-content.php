@@ -12,7 +12,7 @@ License: GPL2
 Copyright 2016 Alejandro Liu (alejandro_liu@hotmail.com)
 
 This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License, version 2, as 
+it under the terms of the GNU General Public License, version 2, as
 published by the Free Software Foundation.
 
 This program is distributed in the hope that it will be useful,
@@ -84,24 +84,24 @@ if (!class_exists('AutoContent')) {
       while (preg_match('/\$[^$]+\$/',$inp, $mv, PREG_OFFSET_CAPTURE, $off)) {
 	$out .= substr($inp,$off, $mv[0][1]-$off);
 	$off = $mv[0][1]+strlen($mv[0][0]);
-	
+
 	$tag = $mv[0][0];
 	if (!preg_match('/\$([A-Za-z]+)\$/',$tag,$mv) && !preg_match('/\$\s*([A-Za-z]+):\s*.*\$/',$tag,$mv)) {
 	  $out .= $tag;
 	  continue;
 	}
 	switch (strtolower($mv[1])) {
-	case 'date':
-	  $out .= '$Date: '.date_i18n(get_option( 'date_format' ),time()).' $';
+	case 'fdate':
+	  $out .= '$FDate: '.date_i18n(get_option( 'date_format' ),time()).' $';
 	  break;
-	case 'sdate':
-	  $out .= '$SDate: '.date_i18n('Y-m-d',time()).' $';
+	case 'date':
+	  $out .= '$Date: '.date_i18n('Y-m-d',time()).' $';
 	  break;
 	case 'week':
 	  $out .= '$Week: '.date_i18n('Y-W',time()).' $';
 	  break;
 	case 'datetime':
-	  $out .= '$DateTime: '.current_time('mysql').' $';	
+	  $out .= '$DateTime: '.current_time('mysql').' $';
 	  break;
 	case 'login':
 	  $current_user = wp_get_current_user();
@@ -120,27 +120,27 @@ if (!class_exists('AutoContent')) {
 	}
       }
       $out .= substr($inp,$off);
-      
+
       return $out;
     }
     public function content_template($content) {
       $template = $this->get_template_post();
       if ($template === NULL) return $content;
-      if (empty($template->post_content)) return $content;      
+      if (empty($template->post_content)) return $content;
       return $this->expand_template($template->post_content);
     }
     public function title_template($title) {
       $template = $this->get_template_post();
       if ($template === NULL) return $content;
       if (empty($template->post_title)) return $content;
-      
+
       return $this->expand_template($template->post_title);
     }
     public function excerpt_template($excerpt) {
       $template = $this->get_template_post();
       if ($template === NULL) return $content;
       if (empty($template->post_excerpt)) return $content;
-      
+
       return $this->expand_template($template->post_excerpt);
     }
     public function category_template($terms, $object_ids, $taxonomies, $args) {
@@ -156,4 +156,3 @@ if (!class_exists('AutoContent')) {
 if (class_exists('AutoContent')) {
   $auto_content = new AutoContent();
 }
-

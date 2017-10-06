@@ -21,8 +21,8 @@ Provides with:
 
 Keyword expansions:
 
-* date : Current date (using default format)
-* sdate : Current date as YYY-MM-DD
+* fdate : Current date (using default format)
+* date : Current date as YYYY-MM-DD
 * week : Year and week of the year
 * datetime : Current date and time
 * login : User name
@@ -39,6 +39,7 @@ Keyword expansions:
 
 ## Changelog
 
+  - Changed sdate/fdate/date semantics
 - 1.0:
   Initial release.
 
